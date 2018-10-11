@@ -63,6 +63,7 @@ pip install awscli --upgrade --user
   cd terraform
   # Create a terraform.tfvars
   cp terraform.tfvars terraform.tfvars.sample
+  # Modify the new file with the required values
   # Initialize the script
   make init
   # Plan for the infrastructure setup
