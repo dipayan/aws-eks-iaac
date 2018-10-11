@@ -32,7 +32,7 @@ tar -zxvf helm-v2.11.0-linux-amd64.tar.gz
 sudo mv linux-amd64/helm /usr/bin/
 ```
   - Download & Install [Docker](https://docs.docker.com/install/linux/docker-ce/centos/) (OPTIONAL)
-    ```bash
+```bash
 sudo yum install -y yum-utils \
 device-mapper-persistent-data \
 lvm2
@@ -42,7 +42,14 @@ sudo yum-config-manager \
     https://download.docker.com/linux/centos/docker-ce.repo
 
 sudo yum install docker-ce    
-    ```
+```
+
+  - Download & Install [AWS CLI](https://aws.amazon.com/cli/)
+```bash
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+pip install awscli --upgrade --user
+```
 
    - Login to your Amazon console and create an S3 Bucket where you will be storing your terraform state files , you can also reuse an existing bucket and create a new folder inside it and pass the folder name in the s3 bucket key.
 
@@ -53,7 +60,9 @@ sudo yum install docker-ce
   git clone https://github.com/dipayan/aws-eks-iaac.git
   # Change into the directory
   cd aws-eks-iaac
-  cd terraform 
+  cd terraform
+  # Create a terraform.tfvars
+  cp terraform.tfvars terraform.tfvars.sample
   # Initialize the script
   make init
   # Plan for the infrastructure setup
